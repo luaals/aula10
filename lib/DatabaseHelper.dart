@@ -25,23 +25,23 @@ class DatabaseHelper {
         await getDatabasesPath(); // Obtém o caminho do diretório de bancos de dados
     return openDatabase(
       // Abre o banco de dados
-      join(path, 'tasks.db'), // Caminho do banco de dados
+      join(path, 'tarefa.db'), // Caminho do banco de dados
       onCreate: (db, version) {
         // Callback executado quando o banco de dados é criado
         return db.execute(
           // Executa uma operação SQL
-          'CREATE TABLE tasks(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT)', // Cria a tabela 'tasks'
+          'CREATE TABLE tarefa(id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, descricao TEXT)', // Cria a tabela 'tarefas'
         );
       },
       version: 1, // Versão do banco de dados
     );
   }
 
-  Future<int> insertTask(Tarefa task) async {
+  Future<int> insertTask(Tarefa tarefa) async {
     // Método assíncrono para inserir uma tarefa no banco de dados
     final db = await database; // Obtém o banco de dados
     return await db.insert(
-        'tasks', task.toMap()); // Insere a tarefa na tabela 'tasks'
+        'tarefa', tarefa.toMap()); // Insere a tarefa na tabela 'tasks'
   }
 
   Future<List<Tarefa>> fetchTasks() async {

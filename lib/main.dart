@@ -1,3 +1,4 @@
+import 'package:aula10crud/task_model.dart';
 import 'package:flutter/material.dart';
 // Importando o pacote material, que contém os widgets do Flutter
 import 'package:aula10crud/DatabaseHelper.dart';
